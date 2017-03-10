@@ -12,11 +12,13 @@ Aggiungere l'opzione `-ggdb` se volete utilizzare il debugger.
 
 int main() {
 	int nr;
-	int n1 = 4;
-	int n2 = 3;
+	int n1 = 3;
+	int n2 = 2;
 	int pr[DIM];
-	int p1[DIM] = {3, -4, 0, 1};
-	int p2[DIM] = {1, 4, 6};
-	somma(p1,n1,p2,n2,pr,&nr);
+	int p1[DIM] = {3, -4, 0, 2};
+	int p2[DIM] = {4, 4, 6};
+	/*somma(p1, n1, p2, n2, pr, &nr);*/
+	prodotto(p1, n1, p2, n2, pr, &nr);
 	return EXIT_SUCCESS;
 }
+
