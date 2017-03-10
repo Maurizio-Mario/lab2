@@ -9,14 +9,14 @@ Compilare con il comando
 Aggiungere l'opzione `-ggdb` se volete utilizzare il debugger.
  */
 
-int nr;
-int p1[DIM];
-int p2[DIM];
-int pr[DIM];
 
 int main() {
-
-	somma({3, -4, 0, 1}, 3, {1, 4, 6}, 2, {0}, &nr);	
-
+	int nr;
+	int n1 = 4;
+	int n2 = 3;
+	int pr[DIM];
+	int p1[DIM] = {3, -4, 0, 1};
+	int p2[DIM] = {1, 4, 6};
+	somma(p1,n1,p2,n2,pr,&nr);
 	return EXIT_SUCCESS;
 }

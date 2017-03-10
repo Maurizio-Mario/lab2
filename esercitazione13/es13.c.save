@@ -81,9 +81,7 @@ void somma(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
                 }
         }
         printf("\n\n");
-return EXIT_SUCCESS;
 }
-	
 
 
 
