@@ -1,0 +1,54 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "es13.h"
+
+/* 
+   Potete usare `coefficiente_binomiale` per implementare la funzione 
+   `potenza_binomio`.
+   Visto che una variabile di tipo `int` occupa 32 bit, si possono verificare 
+   overflow per valori di `n` maggiori o uguali a 13. Nella fase di test saranno 
+   usati solo valori  tali per cui non si verifichino overflow.
+*/
+/*
+int fattoriale(int n) {
+	int i, f;
+
+	f = 1;
+	for (i = 2; i <= n; i++) {
+		f *= i;
+	}
+	return f;
+}
+
+int coefficiente_binomiale(int n, int k) {
+	return fattoriale(n) / (fattoriale(k) * fattoriale(n-k));
+}
+
+/* Esercizi da implementare. */
+void somma(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
+	int i;
+	printf("\n\nSum of two polynomials. What grade is the first one?\n\n");
+	scanf("%d\n", &n1)
+	printf("Now, please insert the first polynomial. What is the value\n"
+		"of the lowest grade? If there is nothing, just type 0.\n\n");
+	for(i = 0; i < n1; ++i){
+		scanf("%d", &p1[i]);
+	}
+	printf("\n\nWell done. Now it is time for the second polynomial. What\n"
+		"is its grade?\n\n");
+	scanf("%d\n", &n2);
+	printf("\nNow type the second polynomial. Missing grades are represented\n"
+		"with a zero:\n\n");
+	for(i = 0; i < n2; ++i){
+		scanf("%d\n", &p2[i];
+	}
+}
+/*
+void prodotto(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
+
+}
+
+void potenza_binomio(int c1, int e1, int c2, int e2, int n, int pr[], int *nr) {
+
+}
+*/
