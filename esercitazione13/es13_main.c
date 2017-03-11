@@ -14,9 +14,9 @@ int main() {
 	int nr;
 	int n1 = 3;
 	int n2 = 2;
-	int pr[DIM];
+	int pr[DIM] = {0};
 	int p1[DIM] = {3, -4, 0, 2};
-	int p2[DIM] = {4, 4, 6};
+	int p2[DIM] = {0};
 	/*somma(p1, n1, p2, n2, pr, &nr);*/
 	prodotto(p1, n1, p2, n2, pr, &nr);
 	return EXIT_SUCCESS;

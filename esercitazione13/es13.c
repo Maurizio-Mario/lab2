@@ -89,34 +89,45 @@ void somma(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
 
 void prodotto(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
 
-        int i, j, k, grad = 0, sum = 0;
+        int i, j, grad = 0;
         nr = &grad;
 
-        printf("\n\n>We are going to multiply a polynomial of grade %d, that is\n\n\t", n1);
+        printf("\n\n>#We are going to multiply a polynomial of grade %d, that is\n\n\t", n1);
         for(i = 0; i <= n1; ++i){
                 if(p1[n1 - i] > 0)
                         printf("+");
                 printf("%dx^%d ", p1[n1 - i], n1 - i);
 	}
 
-        printf("\n\n>and a second polynomial of grade %d, that is:\n\n\t", n2);
+        printf("\n\n>#and a second polynomial of grade %d, that is:\n\n\t", n2);
         for(i = 0; i <= n2; ++i){
                 if(p2[n2 - i] > 0)
                         printf("+");
                 printf("%dx^%d ", p2[n2  - i], n2 - i);
 	}
-	for(i = 0; i < n1; i++){
-		for(j = 0; j < n2; j++){
-			pr[i * j] += p1[i] * p2[j];
-			sum += pr[i * j];
+	for(i = 0; i <= n1; i++){		/*Calculation of result*/
+		for(j = 0; j <= n2; j++){
+			pr[i + j] += p1[i] * p2[j];
 		}
 	}
-	printf(">\n\nThe product of the two polynomial has grade XX,\n"
-		"and correspond to:\n\n\t"); /*sistema*/
-	for(k = 0; k < n1 * n2; ++k){
-		printf("%d ", pr[k]);
+        for(i = n1 * n2; i >= 0; --i){      /*Check maximum valid grade*/
+                if(pr[i] != 0){
+                        *nr = i;
+                         break;
+		}
 	}
-	printf("\n\nsum = %d\n\n", sum);
+	if(p1 == 0 || p2 == 0){
+		*nr = -1;
+		printf("\n\n#Meaningless multiplication. Grade %d.\n\n", *nr);
+	}
+	printf("\n\n#The product of the two polynomial has grade %d,\n"
+		"and correspond to:\n\n\t", *nr); /*sistema*/
+	for(i = n1 + n2; i >= 0; --i){
+                if(pr[i] >= 0)
+                        printf("+");
+		printf("%dx^%d ", pr[i], i);
+	}
+	printf("\n\n");
 }
 
 /*
