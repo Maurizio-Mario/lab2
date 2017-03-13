@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "es13.h"
@@ -12,7 +13,7 @@
 
 
 
-int fattoriale(int n) {
+int fat(int n) {
 	int i, f;
 
 	f = 1;
@@ -22,11 +23,18 @@ int fattoriale(int n) {
 	return f;
 }
 
-int coefficiente_binomiale(int n, int k) {
-	return fattoriale(n) / (fattoriale(k) * fattoriale(n-k));
+int coefBin(int n, int k) {
+	return fat(n) / (fat(k) * fat(n-k));
 }
 
-/*11111111111111111111111111111111111111111111111111111111111*/
+int pow2(int n, int e){
+	int m = n, i;
+	if(e == 0)
+		return 1;
+	for(i = 1; i < e; ++i)
+		m *= n;
+	return m;
+}
 
 int maxGrad(int, int);
 
@@ -85,11 +93,11 @@ void somma(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
         printf("\n\n");
 }
 
-/*22222222222222222222222222222222222222222222222222222222222*/
+
 
 void prodotto(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
 
-        int i, j, grad = 0;
+        int i, j, sum1 = 0, sum2 = 0, grad = 0;
         nr = &grad;
 
         printf("\n\n>#We are going to multiply a polynomial of grade %d, that is\n\n\t", n1);
@@ -110,13 +118,18 @@ void prodotto(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
 			pr[i + j] += p1[i] * p2[j];
 		}
 	}
-        for(i = n1 * n2; i >= 0; --i){      /*Check maximum valid grade*/
+        for(i = n1 * n2; pr[i] != 0; --i){      /*Check maximum valid grade*/
                 if(pr[i] != 0){
                         *nr = i;
-                         break;
 		}
 	}
-	if(p1 == 0 || p2 == 0){
+	for (i = 0; i < 100; ++i) {
+ 		 sum1 += p1[i];
+	}	
+        for (i = 0; i < 100; ++i) {
+                 sum2 += p2[i];
+	}
+	if (sum1 == 0 || sum2 == 0){
 		*nr = -1;
 		printf("\n\n#Meaningless multiplication. Grade %d.\n\n", *nr);
 	}
@@ -130,7 +143,21 @@ void prodotto(int p1[], int n1, int p2[], int n2, int pr[], int *nr) {
 	printf("\n\n");
 }
 
-/*
 void potenza_binomio(int c1, int e1, int c2, int e2, int n, int pr[], int *nr) {
+	int k;
+	*nr = e1 * n;
+
+	for(k = 0; k <= *nr; ++k)
+		pr[k] = 0;
+
+	for(k = 0; k <= *nr; ++k){ 
+		pr[e1 *(n-k) + e2*k] = coefBin (n,k) * pow2(c1,n-k) * pow2(c2,k);
+		printf("pr[%d]=%d\n", k, pr[k]);
+	}
+		printf("\n");
+	        for(k = 0; k <= *nr; ++k)
+                	printf("pr[%d]=%d\n", k, pr[k]);
 }
-*/
+
+
+

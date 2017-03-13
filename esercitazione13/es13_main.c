@@ -17,8 +17,11 @@ int main() {
 	int pr[DIM] = {0};
 	int p1[DIM] = {3, -4, 0, 2};
 	int p2[DIM] = {0};
-	/*somma(p1, n1, p2, n2, pr, &nr);*/
+	int c1 = 3; int e1 = 2;
+	int c2 = 1; int e2 = 0; int n = 2;
+	somma(p1, n1, p2, n2, pr, &nr);
 	prodotto(p1, n1, p2, n2, pr, &nr);
+	potenza_binomio(c1, e1, c2, e2, n, pr, &nr);
 	return EXIT_SUCCESS;
 }
 
